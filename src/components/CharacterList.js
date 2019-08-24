@@ -3,7 +3,7 @@ import axios from "axios";
 import CharacterCard from "./CharacterCard";
 
 const CharacterList = () => {
-    const [characters, setCharacters] = useState([]);
+    const [characters, setCharacters] = useState();
   // TODO: Add useState to track data from useEffect
 
   useEffect(() => {
@@ -13,17 +13,21 @@ const CharacterList = () => {
     axios
         .get("https://rickandmortyapi.com/api/character/")
         .then(res => {
-            console.log(res.data);
-            setCharacters(res.data.results);
+            console.log(res.data.results);
+            // setCharacters(res.data.results);
         });
   }, []);
+
+  if (!characters) {
+    return (<div>Loading Information</div>)
+  }
 
   return (
     <div className="character-list grid-view">
       {characters.map(char => {
         return (
+          <div>
           <CharacterCard 
-            key={char.id}
             id={char.id}
             name={char.name}
             status={char.status}
@@ -32,6 +36,7 @@ const CharacterList = () => {
             gender={char.gender}
             origin={char.origin}
           />
+          </div>
         );
       })}
     </div>
