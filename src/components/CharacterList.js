@@ -13,8 +13,8 @@ const CharacterList = () => {
     axios
         .get("https://rickandmortyapi.com/api/character/")
         .then(res => {
-            console.log(res.data.results);
-            // setCharacters(res.data.results);
+            console.log(res.data);
+            setCharacters(res.data.results);
         });
   }, []);
 
@@ -28,13 +28,15 @@ const CharacterList = () => {
         return (
           <div>
           <CharacterCard 
+            key={char.id}
             id={char.id}
+            image={char.image}
             name={char.name}
             status={char.status}
             species={char.species}
             type={char.type}
-            gender={char.gender}
             origin={char.origin}
+            location={char.location}
           />
           </div>
         );

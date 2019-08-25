@@ -1,5 +1,5 @@
 import React from "react";
-import { Tab, Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
 
@@ -11,27 +11,26 @@ const TabNav = () => {
     return (
         <div className="NavBar">
             <Menu>
-            <Tab/>
+            <Menu.Item>
             <Icon name="home" />
-            <NavLink to="/">Home Page</NavLink>
-            </Menu>
-
-            <Menu>
-            <Tab/>
+            <NavLink to="/">Home Page</NavLink>   
+            </Menu.Item>
+            
+            <Menu.Item>
             <Icon name="users" />
             <NavLink to="/characters">Characters</NavLink>
-            </Menu>
+            </Menu.Item>
             
-            <Menu>
-            <Tab/>
+            <Menu.Item>
             <Icon name="map outline" />
             <NavLink to="/locations">Locations</NavLink>
-            </Menu>
-            
-            <Menu>
-            <Tab/>
+            </Menu.Item>
+  
+            <Menu.Item>
             <Icon name="video" />
             <NavLink to="/episodes">Episodes</NavLink>
+            </Menu.Item>
+
             </Menu>
         </div>
     );
